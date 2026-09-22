@@ -9,7 +9,7 @@ elementos de L de menor a mayor. Para ello debe tomarse el menor elemento de L e
 restante, con el segundo elemento, y así sucesivamente. Esta función debe ser IN PLACE.
 */
 
-void mostrar_lista(const list<int> &L)
+void mostrar_lista(const list<int> &L) // una función para mostrar mi lista
 {
     cout << "{";
 
@@ -26,17 +26,17 @@ void mostrar_lista(const list<int> &L)
 
 void selection_sort(list<int> &L)
 {
-    for (list<int>::iterator itAfuera = L.begin(); itAfuera != L.end(); itAfuera++)
+    for (list<int>::iterator itAfuera = L.begin(); itAfuera != L.end(); itAfuera++) // primero itero desde el primer elemento
     {
-        auto itMenor = itAfuera ;
-        for (list<int>::iterator itAdentro = next(itMenor); itAdentro != L.end(); itAdentro++)
-        {
+        auto itMenor = itAfuera ; // hago que el primer elemento sea el más pequeño
+        for (list<int>::iterator itAdentro = next(itMenor); itAdentro != L.end(); itAdentro++) // mantengo el iterador externo en su posición actual, y recorro con un iterador interno
+        {                                                                                       // todos los elementos faltantes DESDE la posición SIGUIENTE a la de mi iterador externo
             if (*itAdentro < *itMenor)
             {
-                itMenor = itAdentro;
+                itMenor = itAdentro; // si mi iterador interno es menor al menor elemento, lo asigno al itMenor
             }
         }
-        swap(*itAfuera, *itMenor);
+        swap(*itAfuera, *itMenor); // una vez identificados la posición del menor, intercambio el valor del menor con el de mi iterador externo, y avanzo al proximo elemento de la lista
     }
 }
 
