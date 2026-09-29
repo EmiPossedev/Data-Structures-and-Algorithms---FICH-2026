@@ -44,24 +44,30 @@ list<int> concatenar_2_listas_sublista_insert(list<list<int>> &ll) // una lista 
     return resultado;
 }
 
-list<int> concatenar_lista_sublista_splice(list<list<int>> &ll, )
+list<int> concatenar_lista_sublista_splice(list<list<int>> &ll)
+{
+    list<int> final;
+    for (list<list<int>>::iterator it = ll.begin(); it != ll.end(); it++)
+    {
+        final.splice(final.end(), *it);
+    }
+    return final;
+}
 
 int main()
 {
     // inciso a: concatenar dos listas de int con insert
     list<int> l1 = {1, 2, 3};
     list<int> l2 = {4, 5, 6};
-    list<int> aux1 = concatenar_2_listas_insert(l1,l2);
+    list<int> aux1 = concatenar_2_listas_insert(l1, l2);
     mostrar_lista(aux1);
 
     // inciso b_ concatenar una lista de sublistas de int usando insert
     list<int> l3 = {7, 8, 9};
     list<int> l4 = {10, 11, 12};
-    list<list<int>> l5 = {l3,l4};
+    list<list<int>> l5 = {l3, l4};
     list<int> aux2 = concatenar_2_listas_sublista_insert(l5);
     mostrar_lista(aux2);
-
-
 
     return 0;
 }
