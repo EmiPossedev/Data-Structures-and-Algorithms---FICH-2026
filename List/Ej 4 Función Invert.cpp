@@ -10,13 +10,21 @@ Restricción: no utilizar el método size().
 
 void invert(list<int> &L)
 {
-    for (auto itForward = 0; i < count; i++)
-    {
-        for(auto it = L.end(); it != )    
-    }
-    
-    
+   auto itLeft = L.begin();
+   auto itRight = L.end();
+   while(itLeft != itRight){
+        auto aux = itLeft;
+        itLeft = itRight;
+        itRight = aux;
+        
+        left++;
+        if(itLeft==itRight){
+           break;
 }
+        right--;
+   }
+}
+    
 
 int main()
 {
