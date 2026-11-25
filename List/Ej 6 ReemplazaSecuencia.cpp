@@ -24,40 +24,38 @@ secuencia SEQ, al encontrarla, reemplazar por REEMP, luego seguir buscando
 a partir del siguiente elemento al último de REEMP.
 */
 
-void reemplaza(list<int> &L, list<int> &SEQ, list<int> &REEMP)
+void reemplaza(list<int> &L, const list<int> &SEQ, const list<int> &REEMP)
 {
     if (SEQ.empty())
         return;
 
-    // Declaro un iterador para la posicion para trackear el avance de mi list
     auto pos = L.begin();
 
     while (pos != L.end())
     {
         auto candidato = pos;
         auto itseq = SEQ.begin();
-  
-        // Ahora compruebo si SEQ coincide desde el cursor
-        while (itseq != SEQ.end())
+
+        while (candidato != L.end() &&
+               itseq != SEQ.end() &&
+               *candidato == *itseq)
         {
             ++candidato;
             ++itseq;
         }
+
         if (itseq != SEQ.end())
         {
             ++pos;
             continue;
         }
+
         pos = L.erase(pos, candidato);
 
-        list<int>::iterator ultimoReemp;
-        for (auto it = REEMP.begin(); it != REEMP.end(); ++it)
+        for (int valor : REEMP)
         {
-            ultimoReemp = L.insert(pos, *it);
-        }
-        if (!REEMP.empty())
-        {
-            pos = ++ultimoReemp;
+            pos = L.insert(pos, valor);
+            ++pos;
         }
     }
 }
